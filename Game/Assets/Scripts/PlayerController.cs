@@ -25,7 +25,33 @@ public class PlayerController : MonoBehaviour
         rb2d.AddForce(movement, ForceMode2D.Impulse);
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject hit = (GameObject)Instantiate(attack, trans.position + new Vector3(0.7f, 0f, 0f), Quaternion.identity, trans);
+			Vector3 offset;
+			Vector3 rotation = new Vector3(0f, 0f, 0f);
+			if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") == 0)
+			{
+				if (Input.GetAxisRaw("Horizontal") == -1)
+				{
+					offset = new Vector3(-0.7f, 0f, 0f);
+					rotation = new Vector3(0, 0, 180);
+				}
+				else
+					offset = new Vector3(0.7f, 0f, 0f);
+			}
+			else
+			{
+				if (Input.GetAxisRaw("Vertical") == 1)
+				{
+					offset = new Vector3(0f, 0.7f, 0f);
+					rotation = new Vector3(0, 0, 90);
+				}
+				else
+				{
+					offset = new Vector3(0f, -0.7f, 0f);
+					rotation = new Vector3(0, 0, 270);
+				}
+			}
+			GameObject hit = (GameObject)Instantiate(attack, trans.position + offset, Quaternion.identity, trans);
+			hit.transform.Rotate(rotation);
             Destroy(hit, 0.1f);
         }
     }

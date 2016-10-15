@@ -21,6 +21,6 @@ public class Attack : MonoBehaviour
     {
         Rigidbody2D hitThing = other.gameObject.GetComponent<Rigidbody2D>();
         if (hitThing != null)
-            other.GetComponent<Rigidbody2D>().AddForce(Vector2.right * force, ForceMode2D.Impulse);
+			other.GetComponent<Rigidbody2D>().AddForce(transform.TransformDirection(Vector2.right) * force, ForceMode2D.Impulse);
     }
 }
