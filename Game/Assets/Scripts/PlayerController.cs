@@ -1,21 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Battler
 {
-    public float speed;
-    public GameObject attack;
-
-    Transform trans;
     Rigidbody2D rb2d;
 
     // Use this for initialization
     void Start()
     {
-        trans = GetComponent<Transform>();
+		health = int.MaxValue;
         rb2d = GetComponent<Rigidbody2D>();
     }
-	
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -50,9 +46,7 @@ public class PlayerController : MonoBehaviour
 					rotation = new Vector3(0, 0, 270);
 				}
 			}
-			GameObject hit = (GameObject)Instantiate(attack, trans.position + offset, Quaternion.identity, trans);
-			hit.transform.Rotate(rotation);
-            Destroy(hit, 0.1f);
+			Attack(offset, rotation, attack, 5f);
         }
     }
 }

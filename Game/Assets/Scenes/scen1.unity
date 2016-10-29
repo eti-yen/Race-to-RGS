@@ -271,8 +271,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4710304c9920e5f4294b9ddb785aad4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  attack: {fileID: 1000013433240246, guid: 324517973ca2ddd40b04dfc01b68aee0, type: 2}
+  health: 0
+  speed: 99
+  attack: 99
+  defense: 0
+  hit: {fileID: 114000013272454928, guid: 324517973ca2ddd40b04dfc01b68aee0, type: 2}
 --- !u!61 &605007510
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -570,7 +573,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1230214835}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 9b162cb6af5d1d9459a4e5a8b969ef10, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
@@ -688,10 +691,10 @@ GameObject:
   - 33: {fileID: 1749620282}
   - 23: {fileID: 1749620281}
   - 61: {fileID: 1749620280}
-  - 114: {fileID: 1749620279}
   - 50: {fileID: 1749620284}
+  - 114: {fileID: 1749620279}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: TestDummy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -703,13 +706,16 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1749620278}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4710304c9920e5f4294b9ddb785aad4c, type: 3}
+  m_Script: {fileID: 11500000, guid: 179497d5567328b4ca836f12e9b30209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  attack: {fileID: 0}
+  health: 0
+  speed: 0
+  attack: 0
+  defense: 0
+  hit: {fileID: 0}
 --- !u!61 &1749620280
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -784,7 +790,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
