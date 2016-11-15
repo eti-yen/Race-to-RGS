@@ -8,19 +8,14 @@ public class PlayerController : Battler
     // Use this for initialization
     void Start()
     {
-		health = int.MaxValue;
         rb2d = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector2 movement = new Vector2();
-        movement.x = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        movement.y = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-        rb2d.AddForce(movement, ForceMode2D.Impulse);
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
 			Vector3 offset;
 			Vector3 rotation = new Vector3(0f, 0f, 0f);
 			if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") == 0)
@@ -46,7 +41,14 @@ public class PlayerController : Battler
 					rotation = new Vector3(0, 0, 270);
 				}
 			}
-			Attack(offset, rotation, attack, 5f);
-        }
+			Attack(offset, rotation, attack, 10f);
+		}
+		else
+		{
+			Vector2 movement = new Vector2();
+			movement.x = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+			movement.y = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+			rb2d.AddForce(movement, ForceMode2D.Impulse);
+		}
     }
 }

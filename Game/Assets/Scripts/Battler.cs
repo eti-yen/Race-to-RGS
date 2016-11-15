@@ -12,7 +12,7 @@ public class Battler : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-	
+		
 	}
 	
 	// Update is called once per frame
@@ -33,13 +33,14 @@ public class Battler : MonoBehaviour
 
 	public void Damage(int darmage)
 	{
-		health -= (darmage - defense);
-		if (health <= 0)
-			Die();
+		int damage = darmage - defense;
+		if (damage < 0)
+			damage = 0;
+		health -= damage;
 	}
 
 	protected void Die()
 	{
-		Destroy(gameObject, 0.5f);
+		Destroy(gameObject, 1f);
 	}
 }

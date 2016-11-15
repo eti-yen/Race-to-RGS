@@ -255,7 +255,7 @@ GameObject:
   - 50: {fileID: 605007511}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4710304c9920e5f4294b9ddb785aad4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 9999
   speed: 99
   attack: 99
   defense: 0
@@ -299,7 +299,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 605007508}
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0.1
   m_IsKinematic: 0
@@ -715,7 +715,9 @@ MonoBehaviour:
   speed: 0
   attack: 0
   defense: 0
-  hit: {fileID: 0}
+  hit: {fileID: 114000013272454928, guid: 324517973ca2ddd40b04dfc01b68aee0, type: 2}
+  range: 0.7
+  attackDelay: 1
 --- !u!61 &1749620280
 BoxCollider2D:
   m_ObjectHideFlags: 0
