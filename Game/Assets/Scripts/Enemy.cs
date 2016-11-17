@@ -63,6 +63,7 @@ public class Enemy : Battler
 		if (rb2d.velocity.y == 0)
 			rb2d.velocity += Vector2.up;
 		rb2d.AddForce(rb2d.velocity.normalized * 50, ForceMode2D.Impulse);
+		GetComponent<Collider2D>().enabled = false;
 		base.Die();
 	}
 

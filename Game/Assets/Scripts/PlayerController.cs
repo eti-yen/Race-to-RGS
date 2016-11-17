@@ -4,11 +4,13 @@ using System.Collections;
 public class PlayerController : Battler
 {
     Rigidbody2D rb2d;
+	Animator animor;
 
     // Use this for initialization
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+		animor = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -41,11 +43,13 @@ public class PlayerController : Battler
 					rotation = new Vector3(0, 0, 270);
 				}
 			}
+			animor.SetTrigger("Attack");
 			Attack(offset, rotation, attack, 10f);
 		}
 		else
 		{
 			Vector2 movement = new Vector2();
+			animor.SetBool("Moving", movement.magnitude > 0);
 			movement.x = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
 			movement.y = Input.GetAxis("Vertical") * speed * Time.deltaTime;
 			rb2d.AddForce(movement, ForceMode2D.Impulse);
