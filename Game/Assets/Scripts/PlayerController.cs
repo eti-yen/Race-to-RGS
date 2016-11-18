@@ -20,14 +20,15 @@ public class PlayerController : Battler
     {
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			Vector3 offset;
+			Vector3 offset = Vector3.zero;
 			Vector3 rotation = new Vector3(0f, 0f, 0f);
+			string dir = "";
 			if (Input.GetAxisRaw("Vertical") == 0)
 			{
 				if (!facingRight)
 				{
-					offset = new Vector3(-1.7f, 0f, 0f);
 					rotation = new Vector3(0, 0, 180);
+					offset = new Vector3(-1.7f, 0f, 0f);
 				}
 				else
 					offset = new Vector3(1.7f, 0f, 0f);
@@ -36,16 +37,22 @@ public class PlayerController : Battler
 			{
 				if (Input.GetAxisRaw("Vertical") == 1)
 				{
-					offset = new Vector3(0f, 2f, 0f);
+					offset = new Vector3(0f, 1.7f, 0f);
 					rotation = new Vector3(0, 0, 90);
+					dir = "Up";
 				}
 				else
 				{
-					offset = new Vector3(0f, -1.7f, 0f);
+					offset = new Vector3(0f, -0.5f, 0f);
 					rotation = new Vector3(0, 0, 270);
+					dir = "Down";
 				}
+				if (facingRight)
+					offset += new Vector3(1f, 0f, 0f);
+				else
+					offset += new Vector3(-1f, 0f, 0f);
 			}
-			animor.SetTrigger("Attack");
+			animor.SetTrigger(dir + "Attack");
 			Attack(offset, rotation, attack, 50f, .5f);
 		}
 		else
