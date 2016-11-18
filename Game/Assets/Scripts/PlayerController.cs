@@ -3,6 +3,9 @@ using System.Collections;
 
 public class PlayerController : Battler
 {
+	public float attackDelay = 0.5f;
+	protected float lastAttackTime;
+
 	bool facingRight;
     Rigidbody2D rb2d;
 	Animator animor;
@@ -18,7 +21,7 @@ public class PlayerController : Battler
     // Update is called once per frame
     void FixedUpdate()
     {
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetKeyDown(KeyCode.Space) && Time.time - attackDelay >= lastAttackTime)
 		{
 			Vector3 offset = Vector3.zero;
 			Vector3 rotation = new Vector3(0f, 0f, 0f);
@@ -54,6 +57,7 @@ public class PlayerController : Battler
 			}
 			animor.SetTrigger(dir + "Attack");
 			Attack(offset, rotation, attack, 50f, .5f);
+			lastAttackTime = Time.time;
 		}
 		else
 		{

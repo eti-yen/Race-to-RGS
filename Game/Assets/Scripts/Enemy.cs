@@ -15,7 +15,7 @@ public class Enemy : Battler
 	protected Transform target;
 
 	// Use this for initialization
-	void Start()
+	protected void Start()
 	{
 		target = GameObject.FindGameObjectWithTag("Player").transform;
 		rb2d = GetComponent<Rigidbody2D>();
@@ -28,7 +28,7 @@ public class Enemy : Battler
 		
 	}
 
-	void FixedUpdate()
+	protected void FixedUpdate()
 	{
 		if (health <= 0)
 			Die();
@@ -36,7 +36,7 @@ public class Enemy : Battler
 			Behavior();
 	}
 
-	void Behavior()
+	protected void Behavior()
 	{
 		if (target.position.x < transform.position.x)
 		{

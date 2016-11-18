@@ -8,19 +8,7 @@ public class Battler : MonoBehaviour
 	public int attack;
 	public int defense;
 	public Attack hit;
-
-	// Use this for initialization
-	void Start()
-	{
-		
-	}
 	
-	// Update is called once per frame
-	void Update()
-	{
-	
-	}
-
 	protected void Attack(Vector3 offset, Vector3 rotation, int strength, float force, float wait = 0.1f)
 	{
 		GameObject durr = (GameObject)Instantiate(hit.gameObject, transform.position + offset, Quaternion.identity, transform);

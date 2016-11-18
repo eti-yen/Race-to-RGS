@@ -3,7 +3,9 @@ using System.Collections;
 
 public class Attack : MonoBehaviour
 {
+	[HideInInspector]
 	public int damage;
+	[HideInInspector]
     public float force;
 
     // Use this for initialization
@@ -18,7 +20,7 @@ public class Attack : MonoBehaviour
 	
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    protected void OnTriggerEnter2D(Collider2D other)
     {
         Rigidbody2D hitThing = other.gameObject.GetComponent<Rigidbody2D>();
 		if (hitThing != null)
