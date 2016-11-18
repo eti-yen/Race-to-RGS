@@ -18,6 +18,12 @@ public class PlayerController : Battler
 		facingRight = true;
     }
 
+	void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.Escape))
+			Application.Quit();
+	}
+
     // Update is called once per frame
     void FixedUpdate()
     {
