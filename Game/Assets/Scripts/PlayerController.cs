@@ -71,9 +71,34 @@ public class PlayerController : Battler
 		}
     }
 
+	new protected void Damage(int darmage)
+	{
+		StartCoroutine(TurnRed());
+		base.Damage(darmage);
+	}
+
 	void Flip()
 	{
 		facingRight = !facingRight;
 		transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+	}
+
+	IEnumerator TurnRed()
+	{
+		SpriteRenderer dur = GetComponentInChildren<SpriteRenderer>();
+		for (int i = 0; i < 3; i++)
+		{
+			while (dur.color.g >= 122 + 0.5f)
+			{
+				dur.color = Color.Lerp(dur.color, new Color(255f, 122f, 122f), Time.deltaTime * 7f);
+				yield return null; 
+			}
+			while (dur.color.g <= 255 - 0.5f)
+			{
+				dur.color = Color.Lerp(dur.color, new Color(255f, 122f, 122f), Time.deltaTime * 7f);
+				yield return null; 
+			}
+		}
+		dur.color = Color.white;
 	}
 }

@@ -13,3 +13,5 @@ EditorBuildSettings:
     path: Assets/Scenes/scen1.unity
   - enabled: 1
     path: Assets/Scenes/levl3.unity
+  - enabled: 1
+    path: Assets/Scenes/end.unity

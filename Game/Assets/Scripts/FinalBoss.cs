@@ -20,6 +20,8 @@ public class FinalBoss : Enemy
 	// Update is called once per frame
 	void Update()
 	{
+		if (Input.GetKeyDown(KeyCode.Escape))
+			Application.Quit();
 		if ((!player.enabled || !pleeeeeeya.enabled) && Input.anyKeyDown)
 		{
 			player.enabled = true;
@@ -38,7 +40,7 @@ public class FinalBoss : Enemy
 		endMessages[0].text = "Mr. The Bad Guy is defeated!";
 		endMessages[0].fontSize = 70;
 		endMessages[1].text = "To be continued...?";
-		endMessages[2].text = "(Probably not).";
+		endMessages[2].text = "(Hopefully not).";
 		base.Die();
 	}
 }
