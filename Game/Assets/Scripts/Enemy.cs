@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Enemy : Battler
 {
+	public event Action<Enemy> OnDie;
+
 	public float range = 0.7f;
 
 	public float attackDelay = 0.5f;
@@ -14,10 +17,6 @@ public class Enemy : Battler
 	// Use this for initialization
 	void Start()
 	{
-		health = 1;
-		attack = 1;
-		defense = 0;
-		speed = 1f;
 		target = GameObject.FindGameObjectWithTag("Player").transform;
 		rb2d = GetComponent<Rigidbody2D>();
 		lastAttackTime = Time.time;
@@ -64,10 +63,12 @@ public class Enemy : Battler
 			rb2d.velocity += Vector2.up;
 		rb2d.AddForce(rb2d.velocity.normalized * 50, ForceMode2D.Impulse);
 		GetComponent<Collider2D>().enabled = false;
+		if (OnDie != null)
+			OnDie(this);
 		base.Die();
 	}
 
-	new protected void Attack(Vector3 offset, Vector3 rotation, int strength, float force)
+	protected void Attack(Vector3 offset, Vector3 rotation, int strength, float force)
 	{
 		if (Time.time - lastAttackTime > attackDelay)
 		{

@@ -22,31 +22,31 @@ public class PlayerController : Battler
 		{
 			Vector3 offset;
 			Vector3 rotation = new Vector3(0f, 0f, 0f);
-			if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") == 0)
+			if (Input.GetAxisRaw("Vertical") == 0)
 			{
-				if (Input.GetAxisRaw("Horizontal") == -1)
+				if (!facingRight)
 				{
-					offset = new Vector3(-0.7f, 0f, 0f);
+					offset = new Vector3(-1.7f, 0f, 0f);
 					rotation = new Vector3(0, 0, 180);
 				}
 				else
-					offset = new Vector3(0.7f, 0f, 0f);
+					offset = new Vector3(1.7f, 0f, 0f);
 			}
 			else
 			{
 				if (Input.GetAxisRaw("Vertical") == 1)
 				{
-					offset = new Vector3(0f, 0.7f, 0f);
+					offset = new Vector3(0f, 2f, 0f);
 					rotation = new Vector3(0, 0, 90);
 				}
 				else
 				{
-					offset = new Vector3(0f, -0.7f, 0f);
+					offset = new Vector3(0f, -1.7f, 0f);
 					rotation = new Vector3(0, 0, 270);
 				}
 			}
 			animor.SetTrigger("Attack");
-			Attack(offset, rotation, attack, 10f);
+			Attack(offset, rotation, attack, 50f, .5f);
 		}
 		else
 		{

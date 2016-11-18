@@ -21,14 +21,14 @@ public class Battler : MonoBehaviour
 	
 	}
 
-	protected void Attack(Vector3 offset, Vector3 rotation, int strength, float force)
+	protected void Attack(Vector3 offset, Vector3 rotation, int strength, float force, float wait = 0.1f)
 	{
 		GameObject durr = (GameObject)Instantiate(hit.gameObject, transform.position + offset, Quaternion.identity, transform);
 		durr.transform.Rotate(rotation);
 		durr.GetComponent<Attack>().damage = strength;
 		durr.GetComponent<Attack>().force = force;
 
-		Destroy(durr, 0.1f);
+		Destroy(durr, wait);
 	}
 
 	public void Damage(int darmage)
