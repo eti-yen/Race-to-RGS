@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 9f03595a680188b4895eef6077868e3b
-timeCreated: 1479386187
+timeCreated: 1479412981
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -16,6 +16,7 @@ TextureImporter:
     21300018: Main character Attacking_9
     21300020: Main character Attacking_10
     21300022: Main character Idle
+    21300024: Main character Attacking_11
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -214,6 +215,19 @@ TextureImporter:
         x: 7
         y: 74
         width: 48
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Main character Attacking_11
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 74
+        width: 21
         height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

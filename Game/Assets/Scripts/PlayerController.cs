@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerController : Battler
 {
+	bool facingRight;
     Rigidbody2D rb2d;
 	Animator animor;
 
@@ -11,6 +12,7 @@ public class PlayerController : Battler
     {
         rb2d = GetComponent<Rigidbody2D>();
 		animor = GetComponentInChildren<Animator>();
+		facingRight = true;
     }
 
     // Update is called once per frame
@@ -49,10 +51,18 @@ public class PlayerController : Battler
 		else
 		{
 			Vector2 movement = new Vector2();
-			animor.SetBool("Moving", movement.magnitude > 0);
 			movement.x = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+			if ((Input.GetAxis("Horizontal") > 0 && !facingRight) || (Input.GetAxis("Horizontal") < 0 && facingRight))
+				Flip();
 			movement.y = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+			animor.SetBool("Moving", movement.magnitude > 0);
 			rb2d.AddForce(movement, ForceMode2D.Impulse);
 		}
     }
+
+	void Flip()
+	{
+		facingRight = !facingRight;
+		transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+	}
 }
