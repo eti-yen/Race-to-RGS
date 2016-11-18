@@ -31,6 +31,6 @@ public class LevelManager : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.tag == "Player")
-			SceneManager.LoadScene(0);
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
 }
