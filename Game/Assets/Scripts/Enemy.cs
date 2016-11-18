@@ -40,14 +40,14 @@ public class Enemy : Battler
 	{
 		if (target.position.x < transform.position.x)
 		{
-			if (transform.position.x - target.position.x <= range + 0.2f + 0.5f * target.localScale.x)
+			if (transform.position.x - target.position.x <= range + 0.2f + 0.5f * target.localScale.x + 0.5f * transform.localScale.x)
 				Attack(new Vector3(-range, 0f, 0f), new Vector3(0, 0, 180), attack, .1f);
 			else
 				rb2d.velocity = new Vector2(-speed, rb2d.velocity.y);
 		}
 		else if (target.position.x > transform.position.x)
 		{
-			if (target.position.x - transform.position.x <= range + 0.2f + 0.5f * target.localScale.x)
+			if (target.position.x - transform.position.x <= range + 0.2f + 0.5f * target.localScale.x + 0.5f * transform.localScale.x)
 				Attack(new Vector3(range, 0f, 0f), new Vector3(0, 0, 0), attack, .1f);
 			else
 				rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
