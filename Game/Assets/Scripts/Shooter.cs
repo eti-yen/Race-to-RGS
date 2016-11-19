@@ -39,10 +39,14 @@ public class Shooter : Enemy
 		{
 			Vector3 distance = target.position - bulletSpawn.position;
 			float angle = Vector2.Angle(-bulletSpawn.right, distance);
-			Vector3 rotation = new Vector3(0, 0, -angle);
+			Vector3 rotation;
+			if (target.position.y < bulletSpawn.position.y)
+				rotation = new Vector3(0, 0, angle);
+			else
+				rotation = new Vector3(0, 0, -angle);
 			Vector3 offset = bulletSpawn.localPosition;
 			offset -= new Vector3(hit.transform.localScale.x + 0.5f, 0, 0);
-			GameObject durr = (GameObject)Instantiate(hit.gameObject, transform.position + offset, Quaternion.identity);
+			GameObject durr = (GameObject)Instantiate(hit.gameObject, transform.position + offset, Quaternion.identity, transform);
 			durr.transform.Rotate(rotation);
 			durr.GetComponent<Attack>().damage = attack;
 			durr.GetComponent<Attack>().force = 0.2f;

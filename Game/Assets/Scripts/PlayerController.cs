@@ -20,8 +20,7 @@ public class PlayerController : Battler
 
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Escape))
-			Application.Quit();
+
 	}
 
     // Update is called once per frame
