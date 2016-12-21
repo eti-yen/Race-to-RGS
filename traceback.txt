@@ -1,0 +1,21 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "renpy/common/00start.rpy", line 260, in script
+    jump start
+ScriptError: could not find label 'start'.
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "renpy/common/00start.rpy", line 260, in script
+    jump start
+  File "C:\Users\morake\Downloads\renpy-6.99.11-sdk\renpy\ast.py", line 1519, in execute
+    rv = renpy.game.script.lookup(target)
+  File "C:\Users\morake\Downloads\renpy-6.99.11-sdk\renpy\script.py", line 843, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'start'.
+
+Windows-8-6.2.9200
+Ren'Py 6.99.11.1749
+ 

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 public class PlayerController : Battler
 {
 	public float attackDelay = 0.5f;

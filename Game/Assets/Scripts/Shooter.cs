@@ -4,12 +4,12 @@ using System.Collections;
 public class Shooter : Enemy
 {
 	public Vector2[] waypoints;
-	int index;
+	//int index;
 	Transform bulletSpawn;
 
 	new protected void Start()
 	{
-		index = 0;
+		//index = 0;
 		bulletSpawn = transform.GetChild(0);
 		base.Start();
 	}
@@ -44,9 +44,8 @@ public class Shooter : Enemy
 				rotation = new Vector3(0, 0, angle);
 			else
 				rotation = new Vector3(0, 0, -angle);
-			Vector3 offset = bulletSpawn.localPosition;
-			offset -= new Vector3(hit.transform.localScale.x + 0.5f, 0, 0);
-			GameObject durr = (GameObject)Instantiate(hit.gameObject, transform.position + offset, Quaternion.identity, transform);
+			GameObject durr = (GameObject)Instantiate(hit.gameObject, bulletSpawn.position, bulletSpawn.rotation);
+
 			durr.transform.Rotate(rotation);
 			durr.GetComponent<Attack>().damage = attack;
 			durr.GetComponent<Attack>().force = 0.2f;
